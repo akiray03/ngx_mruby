@@ -13,7 +13,7 @@ HOOK_SERVER_PORT=11111
 function deploy_challenge {
   local DOMAIN="${1}" TOKEN_FILENAME="${2}" TOKEN_VALUE="${3}"
 
-  curl --silent --show-error --fail -XPOST \
+  curl -v --show-error --fail -X POST \
     --header "X-Hook-Secret: $HOOK_SECRET" \
     --data-urlencode "domain=$DOMAIN" \
     --data-urlencode "token_filename=$TOKEN_FILENAME" \
@@ -29,7 +29,7 @@ function clean_challenge {
 function deploy_cert {
   local DOMAIN="${1}" KEYFILE="${2}" CERTFILE="${3}" FULLCHAINFILE="${4}" CHAINFILE="${5}" TIMESTAMP="${6}"
 
-  curl --silent --show-error --fail -XPOST \
+  curl -v --show-error --fail -X POST \
     --header "X-Hook-Secret: $HOOK_SECRET" \
     --data "domain=$DOMAIN" \
     --data "privkey=$KEYFILE" \
@@ -41,7 +41,7 @@ function deploy_cert {
 function unchanged_cert {
   local DOMAIN="${1}" KEYFILE="${2}" CERTFILE="${3}" FULLCHAINFILE="${4}" CHAINFILE="${5}"
 
-  curl --silent --show-error --fail -XPOST \
+  curl -v --show-error --fail -X POST \
     --header "X-Hook-Secret: $HOOK_SECRET" \
     --data "domain=$DOMAIN" \
     --data "privkey=$KEYFILE" \
