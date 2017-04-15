@@ -4,8 +4,8 @@ services:
     # image: matsumotory/ngx-mruby
     build: .
     ports:
-      - '10080:80'
-      - '10443:443'
+      - '80:80'
+      - '443:443'
     volumes:
       - ./docker/conf:/usr/local/nginx/conf
       - ./docker/hook:/usr/local/nginx/hook
